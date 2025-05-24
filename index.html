@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Financial Success Ideas</title>
+  <link rel="stylesheet" href="../my first website/css/style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Financial Success Ideas</h1>
+    <p>Created by Séraphin Banza Kiongo</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+  </nav>
+
+  <main id="home">
+    <h2>Click the button to generate an idea:</h2>
+    <button onclick="generateIdea()">Generate Idea</button>
+    <div id="idea"></div>
+  </main>
+
+  <main id="about">
+    <h2>About the Creator</h2>
+    <p>
+      Séraphin Banza Kiongo is a passionate software developer born on December 23, 2001. 
+      He is dedicated to helping others find creative ways to achieve financial success 
+      using the power of technology and strategic thinking. Still single and always learning!
+    </p>
+  </main>
+
+  <footer>
+    &copy; 2025 Séraphin Banza Kiongo. All rights reserved.
+  </footer>
+
+  <script>
+    const ideas = [
+      "Start a dropshipping business",
+      "Invest in index funds",
+      "Create and sell a digital product",
+      "Start a YouTube channel on finance",
+      "Build a SaaS tool for small businesses",
+      "Learn coding and offer freelance services",
+      "Create an online course in your area of expertise",
+      "Start a blog and monetize with ads or affiliate links",
+      "Buy and resell products on marketplaces",
+      "Invest in real estate crowdfunding"
+    ];
+
+    function generateIdea() {
+      const idea = ideas[Math.floor(Math.random() * ideas.length)];
+      document.getElementById("idea").textContent = idea;
+    }
+  </script>
+
+</body>
+</html>
