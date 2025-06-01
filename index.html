@@ -3,7 +3,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Banza Kiongo Seraphin | Business Idea Generator</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    #social-links a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333;
+      font-size: 1.2rem;
+    }#social-links a i {
+  margin-right: 5px;
+}
+
+  </style>
 </head>
 <body>
   <header>
@@ -16,17 +28,37 @@
     </div>
   </header>  <main>
     <section id="about">
-      <img src="your-photo.jpg" alt="Banza Kiongo Seraphin" id="profile-pic" />
+      <img src="./images/image.jpg" alt="Banza Kiongo Seraphin" id="profile-pic" />
       <p id="bio-text">Welcome! I help generate business ideas that empower African development. Click below to start.</p>
-    </section><section id="idea-generator">
+    </section><section id="creator">
+  <h2>About the Creator</h2>
+  <p id="creator-bio">
+    My name is Banza Kiongo Seraphin, born in 2001. I'm a passionate software developer and business ideas coach
+    committed to inspiring entrepreneurship and sustainable development in Africa. With a background in technology
+    and innovation, I aim to help individuals discover practical, impactful business opportunities that drive
+    positive change across the continent.
+  </p>
+</section>
+
+<section id="idea-generator">
   <button onclick="generateIdea()">Generate Business Idea</button>
-  <div id="idea-display"></div>
+  <div id="idea-display">
+    <img id="idea-image" src="" alt="Business idea" style="max-width: 100%; display: none; margin: 1rem 0;" />
+    <p id="idea-text"></p>
+  </div>
   <button id="details-button" onclick="showDetails()" style="display:none;">How to Achieve This</button>
 </section>
 
 <section id="idea-details" style="display:none;"></section>
 
   </main>  <footer>
+    <div id="social-links">
+      <p>Connect with me:</p>
+      <a href="#" target="_blank"><i class="fab fa-facebook"></i>Facebook</a>
+      <a href="#" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+      <a href="#" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
+      <a href="#" target="_blank"><i class="fab fa-youtube"></i>YouTube</a>
+    </div>
     <p>&copy; 2025 Banza Kiongo Seraphin. All rights reserved.</p>
   </footer>  <script>
     const ideas = [
@@ -34,6 +66,7 @@
         en: "Agritech platform to connect farmers with markets",
         fr: "Plateforme Agritech pour connecter les agriculteurs aux marchés",
         sw: "Jukwaa la Agritech kuunganisha wakulima na masoko",
+        image: "agritech.jpg",
         details: {
           en: "Create a mobile-friendly app that lists farmers' products, connects them with buyers, and provides transportation logistics.",
           fr: "Créez une application mobile conviviale qui répertorie les produits des agriculteurs, les connecte aux acheteurs et fournit une logistique de transport.",
@@ -44,13 +77,13 @@
         en: "Renewable energy installation and consulting",
         fr: "Installation et conseil en énergies renouvelables",
         sw: "Ufungaji na ushauri wa nishati mbadala",
+        image: "renewable.jpg",
         details: {
           en: "Start a consultancy that helps homes and small businesses adopt solar and wind energy with affordable options.",
           fr: "Lancez un cabinet de conseil aidant les maisons et les PME à adopter l'énergie solaire et éolienne.",
           sw: "Anzisha ushauri unaosaidia nyumba na biashara ndogo kutumia jua na upepo kwa gharama nafuu."
         }
       }
-      // Add more ideas here...
     ];
 
     let currentIdea = null;
@@ -59,7 +92,9 @@
     function generateIdea() {
       const random = ideas[Math.floor(Math.random() * ideas.length)];
       currentIdea = random;
-      document.getElementById('idea-display').innerText = random[language];
+      document.getElementById('idea-text').innerText = random[language];
+      document.getElementById('idea-image').src = random.image;
+      document.getElementById('idea-image').style.display = 'block';
       document.getElementById('details-button').style.display = 'inline-block';
       document.getElementById('idea-details').style.display = 'none';
     }
@@ -77,6 +112,11 @@
         en: "Welcome! I help generate business ideas that empower African development. Click below to start.",
         fr: "Bienvenue ! Je génère des idées commerciales pour le développement africain. Cliquez ci-dessous pour commencer.",
         sw: "Karibu! Natoa mawazo ya biashara kwa maendeleo ya Afrika. Bonyeza hapa chini kuanza."
+      }[lang];
+      document.getElementById('creator-bio').innerText = {
+        en: "My name is Banza Kiongo Seraphin, born in 2001. I'm a passionate software developer and business ideas coach committed to inspiring entrepreneurship and sustainable development in Africa. With a background in technology and innovation, I aim to help individuals discover practical, impactful business opportunities that drive positive change across the continent.",
+        fr: "Je m'appelle Banza Kiongo Seraphin, né en 2001. Développeur logiciel passionné et coach en idées d'affaires, je m'engage à inspirer l'entrepreneuriat et le développement durable en Afrique. Grâce à une expertise en technologie et innovation, j'aide à découvrir des opportunités commerciales pratiques et porteuses de changement.",
+        sw: "Naitwa Banza Kiongo Seraphin, nimezaliwa mwaka 2001. Mimi ni msanidi programu na mshauri wa mawazo ya biashara, nikijitolea kuhamasisha ujasiriamali na maendeleo endelevu barani Afrika. Kwa uzoefu katika teknolojia na ubunifu, ninasaidia watu kugundua fursa halisi na zenye athari chanya."
       }[lang];
       if (currentIdea) generateIdea();
     }
