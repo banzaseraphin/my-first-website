@@ -1,63 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Financial Success Ideas</title>
-  <link rel="stylesheet" href="./style.css" />
-
-  <meta name="description" content="A site by Séraphin Banza Kiongo sharing financial success ideas for African advancement.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banza Kiongo Seraphin | Business Idea Generator</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
   <header>
-    <h1>Financial Success Ideas</h1>
-    <p>Created by Séraphin Banza Kiongo</p>
-  </header>
+    <h1>Banza Kiongo Seraphin</h1>
+    <p>Software Developer & Business Ideas Coach</p>
+    <div id="language-switcher">
+      <button onclick="setLanguage('en')">English</button>
+      <button onclick="setLanguage('fr')">Français</button>
+      <button onclick="setLanguage('sw')">Kiswahili</button>
+    </div>
+  </header>  <main>
+    <section id="about">
+      <img src="your-photo.jpg" alt="Banza Kiongo Seraphin" id="profile-pic" />
+      <p id="bio-text">Welcome! I help generate business ideas that empower African development. Click below to start.</p>
+    </section><section id="idea-generator">
+  <button onclick="generateIdea()">Generate Business Idea</button>
+  <div id="idea-display"></div>
+  <button id="details-button" onclick="showDetails()" style="display:none;">How to Achieve This</button>
+</section>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-  </nav>
+<section id="idea-details" style="display:none;"></section>
 
-  <main id="home">
-    <h2>Click the button to generate an idea:</h2>
-    <button onclick="generateIdea()">Generate Idea</button>
-    <div id="idea"></div>
-  </main>
-
-  <main id="about">
-    <h2>About the Creator</h2>
-    <p>
-      Séraphin Banza Kiongo is a passionate software developer born on December 23, 2001. 
-      He is dedicated to helping others find creative ways to achieve financial success 
-      using the power of technology and strategic thinking. Still single and always learning!
-    </p>
-  </main>
-
-  <footer>
-    &copy; 2025 Séraphin Banza Kiongo. All rights reserved.
-  </footer>
-
-  <script>
+  </main>  <footer>
+    <p>&copy; 2025 Banza Kiongo Seraphin. All rights reserved.</p>
+  </footer>  <script>
     const ideas = [
-      "Start a dropshipping business",
-      "Invest in index funds",
-      "Create and sell a digital product",
-      "Start a YouTube channel on finance",
-      "Build a SaaS tool for small businesses",
-      "Learn coding and offer freelance services",
-      "Create an online course in your area of expertise",
-      "Start a blog and monetize with ads or affiliate links",
-      "Buy and resell products on marketplaces",
-      "Invest in real estate crowdfunding"
+      {
+        en: "Agritech platform to connect farmers with markets",
+        fr: "Plateforme Agritech pour connecter les agriculteurs aux marchés",
+        sw: "Jukwaa la Agritech kuunganisha wakulima na masoko",
+        details: {
+          en: "Create a mobile-friendly app that lists farmers' products, connects them with buyers, and provides transportation logistics.",
+          fr: "Créez une application mobile conviviale qui répertorie les produits des agriculteurs, les connecte aux acheteurs et fournit une logistique de transport.",
+          sw: "Tengeneza app inayofaa kwa simu ambayo inaorodhesha bidhaa za wakulima, inawaunganisha na wanunuzi, na hutoa usafirishaji."
+        }
+      },
+      {
+        en: "Renewable energy installation and consulting",
+        fr: "Installation et conseil en énergies renouvelables",
+        sw: "Ufungaji na ushauri wa nishati mbadala",
+        details: {
+          en: "Start a consultancy that helps homes and small businesses adopt solar and wind energy with affordable options.",
+          fr: "Lancez un cabinet de conseil aidant les maisons et les PME à adopter l'énergie solaire et éolienne.",
+          sw: "Anzisha ushauri unaosaidia nyumba na biashara ndogo kutumia jua na upepo kwa gharama nafuu."
+        }
+      }
+      // Add more ideas here...
     ];
 
-    function generateIdea() {
-      const idea = ideas[Math.floor(Math.random() * ideas.length)];
-      document.getElementById("idea").textContent = idea;
-    }
-  </script>
+    let currentIdea = null;
+    let language = 'en';
 
-</body>
+    function generateIdea() {
+      const random = ideas[Math.floor(Math.random() * ideas.length)];
+      currentIdea = random;
+      document.getElementById('idea-display').innerText = random[language];
+      document.getElementById('details-button').style.display = 'inline-block';
+      document.getElementById('idea-details').style.display = 'none';
+    }
+
+    function showDetails() {
+      if (currentIdea) {
+        document.getElementById('idea-details').innerText = currentIdea.details[language];
+        document.getElementById('idea-details').style.display = 'block';
+      }
+    }
+
+    function setLanguage(lang) {
+      language = lang;
+      document.getElementById('bio-text').innerText = {
+        en: "Welcome! I help generate business ideas that empower African development. Click below to start.",
+        fr: "Bienvenue ! Je génère des idées commerciales pour le développement africain. Cliquez ci-dessous pour commencer.",
+        sw: "Karibu! Natoa mawazo ya biashara kwa maendeleo ya Afrika. Bonyeza hapa chini kuanza."
+      }[lang];
+      if (currentIdea) generateIdea();
+    }
+  </script></body>
 </html>
